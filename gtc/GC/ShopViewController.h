@@ -11,6 +11,11 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface ShopViewController : UIViewController  <AVAudioPlayerDelegate,ADBannerViewDelegate>
+{
+    __weak IBOutlet UILabel *remainingHint;
+    __weak IBOutlet UILabel *remainingElimination;
+    
+}
 
 
 @property (retain, nonatomic) IBOutlet UILabel *hints;

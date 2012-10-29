@@ -239,7 +239,7 @@ double oppcoins;
       
         //opp_coins.text=[NSString stringWithFormat:@"%d", (int)oppcoins];
         
-        if(![a1 intValue]==1 || [opptime1.text isEqualToString:@"10.0"])
+        if(![a1 intValue]==1)
         {
             opptime1.text=@"";
             
@@ -254,7 +254,7 @@ double oppcoins;
         }
         
         
-        if(![a2 intValue]==1 || [opptime2.text isEqualToString:@"10.0"])
+        if(![a2 intValue]==1)
         {
             opptime2.text=@"";
             ot2.image=[UIImage imageNamed:@"wrong_btn@2x.png"];
@@ -265,7 +265,7 @@ double oppcoins;
             ot2.image=[UIImage imageNamed:@"win_btn@2x.png"];
             
         }
-        if(![a3 intValue]==1 || [opptime3.text isEqualToString:@"10.0"])
+        if(![a3 intValue]==1)
         {
             
             opptime3.text=@"";
@@ -277,7 +277,7 @@ double oppcoins;
             ot3.image=[UIImage imageNamed:@"win_btn@2x.png"];
             
         }
-        if(![a4 intValue]==1 || [opptime4.text isEqualToString:@"10.0"])
+        if(![a4 intValue]==1)
         {
             
             opptime4.text=@"";
@@ -289,7 +289,7 @@ double oppcoins;
             ot4.image=[UIImage imageNamed:@"win_btn@2x.png"];
             
         }
-        if(![a5 intValue]==1 || [opptime5.text isEqualToString:@"10.0"])
+        if(![a5 intValue]==1)
         {
             opptime5.text=@"";
             
@@ -341,7 +341,7 @@ double oppcoins;
 
         
     
-    if(![u1 isEqualToString:str6] || [time1.text isEqualToString:@"10.0"])
+    if(![u1 isEqualToString:str6])
     {
         time1.text=@" ";
         ut1.image=[UIImage imageNamed:@"wrong_btn@2x.png"]; 
@@ -353,7 +353,7 @@ double oppcoins;
         ut1.image=[UIImage imageNamed:@"win_btn@2x.png"]; 
         
     }
-    if(![u2 isEqualToString:str7]||[time2.text isEqualToString:@"10.0"])
+    if(![u2 isEqualToString:str7])
     {
         
          time2.text=@" ";
@@ -365,7 +365,7 @@ double oppcoins;
         ut2.image=[UIImage imageNamed:@"win_btn@2x.png"]; 
         
     }
-    if(![u3 isEqualToString:str8]  || [time3.text isEqualToString:@"10.0"])
+    if(![u3 isEqualToString:str8])
     {
          time3.text=@" ";
         ut3.image=[UIImage imageNamed:@"wrong_btn@2x.png"]; 
@@ -376,7 +376,7 @@ double oppcoins;
         ut3.image=[UIImage imageNamed:@"win_btn@2x.png"]; 
         
     }
-    if(![u4 isEqualToString:str9] || [time4.text isEqualToString:@"10.0"])
+    if(![u4 isEqualToString:str9])
     {
          time4.text=@" ";
         ut4.image=[UIImage imageNamed:@"wrong_btn@2x.png"]; 
@@ -387,7 +387,7 @@ double oppcoins;
         ut4.image=[UIImage imageNamed:@"win_btn@2x.png"]; 
         
     }
-    if(![u5 isEqualToString:str10] || [time5.text isEqualToString:@"10.0"])
+    if(![u5 isEqualToString:str10])
     {
         
          time5.text=@" ";
@@ -491,33 +491,15 @@ double oppcoins;
     
     if(otime1 == nil || otime2==nil || otime3==nil || otime4==nil || otime5==nil)
     {
-        NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
+       // NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
         
         // [defaults1 setObject:info forKey:@"next"];
-        [defaults1 setBool:YES  forKey:@"next"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSUserDefaults *defaults2 = [NSUserDefaults standardUserDefaults];
-        
-        // [defaults1 setObject:info forKey:@"next"];
-        [defaults2 setInteger:1 forKey:@"n"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        
-        int a=[[NSUserDefaults standardUserDefaults]integerForKey:@"count" ];
-        
+       // [defaults1 setBool:YES  forKey:@"next"];
+        //[[NSUserDefaults standardUserDefaults] synchronize];
+        [self showActivityIndicater];
                
-     //   if([[NSUserDefaults standardUserDefaults]boolForKey:@"loginplay"])
-      //  {
-         //   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:a+1] animated:YES ];
-          
-            
-            
-      //  }
-       // else{
-            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:a] animated:YES ];
-            
-      //  }
         
+            
         if([[NSUserDefaults standardUserDefaults]boolForKey:@"Facebook_post"])
         {
             [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"Facebook_post"];
@@ -549,20 +531,70 @@ double oppcoins;
             {
                 NSString *fbuname = [[NSUserDefaults standardUserDefaults]valueForKey:@"fbuname"];
                 [[FacebookManager facebookConnect]Call_FB];
-                [[FacebookManager facebookConnect]Post_To_Friend_Wall_WithMsg:[NSString stringWithFormat:@"Hey, %@ has invited you to play an awesome game. Guess That celebrity is the new hype and is available on iPhone.\nYou can download the app on the Apple AppStore just search for 'Guess That Celebrity' or play with me on Facebook.\nCan you recognise Richard Branson? Or Madonna?\nGuess That Celebrity!\nEnjoy and play",fbuname]Friend_FBID:fbid WithLink:nil];
+                [[FacebookManager facebookConnect]Post_To_Friend_Wall_WithMsg:[NSString stringWithFormat:@"Hey, %@ has invited you to play an awesome game. Guess That celebrity is the new hype and is available on iPhone.\nYou can download the app on the Apple AppStore just search for 'Guess That Celebrity'.\nCan you recognise Richard Branson? Or Madonna?\nGuess That Celebrity!\nEnjoy and play",fbuname]Friend_FBID:fbid WithLink:nil];
             }
         }
 
       } 
         
+                
+        [self performSelector:@selector(navigation) withObject:nil afterDelay:0.0];
     }
     else{
         [self performSegueWithIdentifier:@"scorepage" sender:nil];
     }
+}
+-(void)navigation
+{
+    [self hideActivityIndicater];
+    NSUserDefaults *defaults2 = [NSUserDefaults standardUserDefaults];
     
+    // [defaults1 setObject:info forKey:@"next"];
+    [defaults2 setInteger:1 forKey:@"n"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    int a=[[NSUserDefaults standardUserDefaults]integerForKey:@"count" ];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:a] animated:YES ];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadTable" object:nil];
 
+}
+-(void)showActivityIndicater
+{
+    activityImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
+    // meImage.image=[UIImage imageNamed:@"splashscreen_v2@2x.png"];
+    
+    //  NSData *meData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"splashscreen_v2@2x.png"]];
+    
+    // [meImage setImage:[UIImage imageWithData:meData]];
+    
+    
+    // [self.view addSubview:meImage];
+    
+    
+    
+    
+    activityImage.animationImages = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"img11.png"],[UIImage imageNamed:@"img10.png"], [UIImage imageNamed:@"img9.png"], [UIImage imageNamed:@"img8.png"],[UIImage imageNamed:@"img7.png"],[UIImage imageNamed:@"img6.png"],[UIImage imageNamed:@"img5.png"],[UIImage imageNamed:@"img4.png"],[UIImage imageNamed:@"img3.png"],nil];
+    [self.view addSubview:activityImage];
+    //[self attachPopUpAnimationToView:imageView];
+    
+    
+    if(![activityImage isAnimating]) {
+        NSLog(@"no");
+        activityImage.animationDuration=1;
+        [activityImage startAnimating];
+    }
     
 }
+-(void)hideActivityIndicater
+{
+    // [SVProgressHUD dismiss];
+    [activityImage stopAnimating];
+    [activityImage removeFromSuperview];
+}
+
+
+
 
 -(void)FB_Logged_In_Successfully
 {

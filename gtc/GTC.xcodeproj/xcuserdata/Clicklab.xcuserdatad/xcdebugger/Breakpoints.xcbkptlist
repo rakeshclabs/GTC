@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GC/NewGameUserNameViewController.m"
-         timestampString = "370327834.341791"
+         timestampString = "372674889.691614"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "375"
-         endingLineNumber = "375"
+         startingLineNumber = "184"
+         endingLineNumber = "184"
          landmarkName = "-didReceiveMemoryWarning"
          landmarkType = "5">
       </FileBreakpoint>
@@ -69,19 +69,6 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GC/CreateViewController.m"
-         timestampString = "372336368.428155"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3763"
-         endingLineNumber = "3763"
-         landmarkName = "-didReceiveMemoryWarning"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
@@ -112,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GC/NewGameUserNameViewController.m"
-         timestampString = "371470556.124026"
+         timestampString = "372928107.666069"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3173"
-         endingLineNumber = "3173"
+         startingLineNumber = "3055"
+         endingLineNumber = "3055"
          landmarkName = "-goToSecondTrailer:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +125,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GC/CreateViewController.m"
-         timestampString = "372323257.539404"
+         timestampString = "372665950.594007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1037"
-         endingLineNumber = "1037"
+         startingLineNumber = "1056"
+         endingLineNumber = "1056"
          landmarkName = "-SaveData"
          landmarkType = "5">
       </FileBreakpoint>

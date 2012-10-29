@@ -14,9 +14,12 @@
 {
     __weak IBOutlet UILabel *textView;
     __weak IBOutlet UILabel *textView1;
+    __weak IBOutlet UILabel *OppLabel;
+    
     __weak IBOutlet UIImageView *coinImageView;
     __weak IBOutlet UILabel *finalScore;
     __weak IBOutlet UIImageView *backgroundImageView;
+    
     
 }
 @property (retain, nonatomic) IBOutlet UILabel *opponentname;

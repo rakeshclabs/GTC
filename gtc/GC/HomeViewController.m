@@ -12,6 +12,7 @@
 #import "SVProgressHUD.h"
 #import "AccountSettingsViewController.h"
 #import "AboutSettingsViewController.h"
+#import "Reachability.h"
 @interface HomeViewController ()
 
 @end
@@ -55,24 +56,13 @@ UIView *settingView;
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self hideActivityIndicater];
-     
-    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"access_token"]);
-    if([[NSUserDefaults standardUserDefaults]objectForKey:@"access_token"])
-   {
-        [self POST];
-   }
-    else{
-        [self hideActivityIndicater];
-        NSLog(@"log out");
-    }
-          
+             
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+       
  //   [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"homeplay"];
     
   //  [[NSUserDefaults standardUserDefaults]synchronize];
@@ -126,12 +116,20 @@ UIView *settingView;
         [self.view addSubview:splashrotating];
         
         splashrotating.animationImages = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"splash1.png"], [UIImage imageNamed:@"splash2.png"], [UIImage imageNamed:@"splash3.png"],[UIImage imageNamed:@"splash4.png"],[UIImage imageNamed:@"splash5.png"],/*[UIImage imageNamed:@"8.png"].,*/ nil];
-       // [self.view addSubview:splashrotating];
-        //[self attachPopUpAnimationToView:imageView];
-        if(![splashrotating isAnimating]) {
+          if(![splashrotating isAnimating]) {
             NSLog(@"no");
             splashrotating.animationDuration=1.0;
             [splashrotating startAnimating];
+              Reachability *reach = [Reachability reachabilityForInternetConnection];	
+                      NetworkStatus netStatus = [reach currentReachabilityStatus];    
+                      if (netStatus == NotReachable) {        
+                          NSLog(@"No internet connection!");  
+                          [self performSelector:@selector(stop) withObject:nil afterDelay:20.0];
+                      } 
+                      else {
+                          [self performSelector:@selector(start) withObject:nil afterDelay:1.0];
+                          
+                      }
         }
         
         
@@ -149,6 +147,27 @@ UIView *settingView;
 
 
 	// Do any additional setup after loading the view.
+}
+-(void)start
+{
+    [self hideActivityIndicater];
+    
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"access_token"]);
+    if([[NSUserDefaults standardUserDefaults]objectForKey:@"access_token"])
+    {
+        [self POST];
+    }
+    else{
+        [self hideActivityIndicater];
+        NSLog(@"log out");
+    }
+
+}
+-(void)stop
+{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Connection Error" message:@"No Internet Connection" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    //[splashrotating stopAnimating];
 }
 
 - (void)viewDidUnload
@@ -1094,26 +1113,22 @@ settingView=[[UIView alloc] initWithFrame:CGRectMake(20,100,270,190)];
 }
 
 
--(void)viewWillAppear:(BOOL)animated{
-   
+-(void)viewWillAppear:(BOOL)animated
+{
+
    [[NSUserDefaults standardUserDefaults]setInteger:1  forKey:@"count"];
    [[NSUserDefaults standardUserDefaults]synchronize];
-    
-      
-   
 }
-
 
 - (void) attachPopUpAnimationToView:(UIView *)myView
 {
     CAKeyframeAnimation *animation = [CAKeyframeAnimation
                                       animationWithKeyPath:@"transform"];
-    
+
     CATransform3D scale1 = CATransform3DMakeScale(0.5, 0.5, 1);
     CATransform3D scale2 = CATransform3DMakeScale(1.2, 1.2, 1);
     CATransform3D scale3 = CATransform3DMakeScale(0.9, 0.9, 1);
     CATransform3D scale4 = CATransform3DMakeScale(1.0, 1.0, 1);
-    
     NSArray *frameValues = [NSArray arrayWithObjects:
                             [NSValue valueWithCATransform3D:scale1],
                             [NSValue valueWithCATransform3D:scale2],
@@ -1121,7 +1136,6 @@ settingView=[[UIView alloc] initWithFrame:CGRectMake(20,100,270,190)];
                             [NSValue valueWithCATransform3D:scale4],
                             nil];
     [animation setValues:frameValues];
-    
     NSArray *frameTimes = [NSArray arrayWithObjects:
                            [NSNumber numberWithFloat:0.0],
                            [NSNumber numberWithFloat:0.5],
@@ -1129,11 +1143,9 @@ settingView=[[UIView alloc] initWithFrame:CGRectMake(20,100,270,190)];
                            [NSNumber numberWithFloat:1.0],
                            nil]; 
     [animation setKeyTimes:frameTimes];
-    
     animation.fillMode = kCAFillModeForwards;
     animation.removedOnCompletion = NO;
     animation.duration = .2;
-    
     [myView.layer addAnimation:animation forKey:@"popup"];
 }
 - (IBAction)fblogin:(id)sender 
@@ -1141,7 +1153,6 @@ settingView=[[UIView alloc] initWithFrame:CGRectMake(20,100,270,190)];
     count=[[NSUserDefaults standardUserDefaults]integerForKey:@"FBcount"];
     NSLog(@"Count=%d",count);
     count++;
-    
     [[NSUserDefaults standardUserDefaults]setInteger:count forKey:@"FBcount"];
     NSLog(@"Count=%d",[[NSUserDefaults standardUserDefaults]integerForKey:@"FBcount"]);
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"sound"])
@@ -1189,7 +1200,9 @@ settingView=[[UIView alloc] initWithFrame:CGRectMake(20,100,270,190)];
         [[FacebookManager facebookConnect]Post_To_Friend_Wall_WithMsg:[NSString stringWithFormat:@"%@ has just started playing Guess That Celebrity on the iPhone! Start playing now to test your celebrity knowledge",fbuname]Friend_FBID:fbid WithLink:nil];
    if(count>=3)
        [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"FBcount"]; 
+    
     }
+    
     NSLog(@"Loged In successful");
    // [self hideActivityIndicater];
     

@@ -161,197 +161,6 @@ meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
 
 
 
--(void) onTimer:(NSTimer *)timer1 {
-    
-    countdown = countdown - 0.01;
-    NSLog(@"countdown %f",countdown);
-    
-    if(countdown>0.0f)
-    {
-        if(countdown1==1.0)
-        {
-            float var=_prog1.progress;
-            [_prog1 setProgress:var];
-            
-            
-            return;
-            
-        }
-        else{
-            
-            [_prog1 setProgress: countdown];
-            
-            
-            NSString *str = [NSString stringWithFormat:@"%.1f", countdown];
-            
-            
-            _time1.text=str;
-            
-            
-            
-            
-            
-        }
-        
-    
-        
-        
-    
-    }
-    else{
-        [timer invalidate];
-        timer=nil;
-        
-    }
-}
-
-
-
-
-
-
--(void) onTimer2:(NSTimer *)timer1 {
-    
-    countdown = countdown - 0.01;
-    NSLog(@"countdown %f",countdown);
-    
-    
-    if(countdown>0.0f){
-        if(countdown2==1.0)
-        {
-            float var=_prog2.progress;
-            [_prog2 setProgress:var];
-            
-            
-            return;   
-        }
-        else
-        {
-            [_prog2 setProgress: countdown];
-            
-            
-            NSString *str7 = [NSString stringWithFormat:@"%.1f", countdown];
-            _time2.text=str7;
-        }
-        //[_prog1 setNeedsDisplay];
-    }
-     else
-     {
-         
-         
-         [timer12 invalidate];
-         timer12=nil;
-         
-     // Whatever you want to do once the time is up.
-     
-     // One thing you'll probably want to do here is stop the timer
-     // from going off anymore.  So, you'd want something like
-     
-     //   [timer invalidate];
-     //  [timer release];
-     }
-}
-
-
-
-
--(void) onTimer3:(NSTimer *)timer1 {
-    
-    countdown = countdown - 0.01;
-    NSLog(@"countdown %f",countdown);
-    
-    if(countdown>0.0f){
-        if(countdown3==1.0)
-        {
-            float var=_prog3.progress;
-            [_prog3 setProgress:var];
-            
-        }
-        else
-        {
-            [_prog3 setProgress: countdown];
-            
-            
-            NSString *str7 = [NSString stringWithFormat:@"%.1f", countdown];
-            _time3.text=str7;}
-        //[_prog1 setNeedsDisplay];
-    }
-    else
-    {
-        [timer13 invalidate];
-        timer13=nil;
-        
-    }
-}
-
-
-
-
-
--(void) onTimer4:(NSTimer *)timer1 {
-    
-    countdown = countdown - 0.01;
-    NSLog(@"countdown %f",countdown);
-    
-    if(countdown>0.0f){
-        if(countdown4==1.0)
-        {
-            float var=_prog4.progress;
-            [_prog4 setProgress:var];   
-        }
-        else
-        {
-            [_prog4 setProgress: countdown];
-            
-            
-            NSString *str7 = [NSString stringWithFormat:@"%.1f", countdown];
-            _time4.text=str7;
-        }
-        //[_prog1 setNeedsDisplay];}
-    }
-    else
-    {
-        // Whatever you want to do once the time is up.
-        
-        // One thing you'll probably want to do here is stop the timer
-        // from going off anymore.  So, you'd want something like
-        
-        //[timer invalidate];
-        //[timer release];
-        [timer14 invalidate];
-        timer14=nil;
-        
-    }
-}
-
--(void) onTimer5:(NSTimer *)timer1 {
-    
-    countdown = countdown - 0.01;
-    NSLog(@"countdown %f",countdown);
-    
-    if(countdown>0.0f){
-	    [_prog5 setProgress: countdown];
-        
-        
-        NSString *str7 = [NSString stringWithFormat:@"%.1f", countdown];
-        _time5.text=str7;
-        //[_prog1 setNeedsDisplay];
-    }
-    else
-    {
-        // Whatever you want to do once the time is up.
-        
-        // One thing you'll probably want to do here is stop the timer
-        // from going off anymore.  So, you'd want something like
-        
-        [timer15 invalidate];
-        timer15=nil;
-       // [timer release];
-    }
-}
-
-
-
 
 
 
@@ -445,12 +254,14 @@ double s=0.0;
         }
     else
     {
+        
         [progbtn1 setBackgroundImage:[UIImage imageNamed:@"wrong_answer@2x.png"] forState:UIControlStateNormal];
         NSString *getImagePath6 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/6.jpg"];
         
         UIImage *img6 = [UIImage imageWithContentsOfFile:getImagePath6];
         imageView.image=img6;
-        
+        [timer2 invalidate];
+        timer2=nil;
         
         
     }
@@ -489,12 +300,14 @@ double t=0.0;
     }
     else
     {
+        
         [progbtn2 setBackgroundImage:[UIImage imageNamed:@"wrong_answer@2x.png"] forState:UIControlStateNormal];
         NSString *getImagePath7 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/7.jpg"];
         
         UIImage *img7 = [UIImage imageWithContentsOfFile:getImagePath7];
         imageView.image=img7;
-        
+        [timer22 invalidate];
+        timer22=nil;
         
         
     }
@@ -538,7 +351,8 @@ double u=0.0;
         UIImage *img8 = [UIImage imageWithContentsOfFile:getImagePath8];
         
         imageView.image=img8;
-        
+        [timer23 invalidate];
+        timer23=nil;
         
         
     }
@@ -585,7 +399,8 @@ double v=0.0;
         UIImage *img9 = [UIImage imageWithContentsOfFile:getImagePath9];
         imageView.image=img9;
         
-        
+        [timer24 invalidate];
+        timer24=nil;
         
     }
     
@@ -630,7 +445,8 @@ double w=0.0;
         UIImage *img10 = [UIImage imageWithContentsOfFile:getImagePath10];
         imageView.image=img10;
         
-        
+        [timer25 invalidate];
+        timer25=nil;
         
     }
     
@@ -641,9 +457,52 @@ double w=0.0;
 -(void)button1:(id)sender{
     
 }
+-(void)highscore
+{
+    NSURL *url23 = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"fireworks_small_cluster"ofType:@"mp3"]];
+    NSError *error23;
+    AVAudioPlayer *myPlayer = [[AVAudioPlayer alloc]
+                            initWithContentsOfURL:url23
+                            error:&error23];
+    if (error23)
+    {
+        NSLog(@"Error in audioPlayer: %@",
+              [error23 localizedDescription]);
+    } else {
+        myPlayer.delegate = self;
+        [myPlayer prepareToPlay];
+    }
+    
+    
+    [myPlayer play];
+    
+    myView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
+    myView.backgroundColor=[UIColor blackColor];
+    myView.alpha= 0.7; 
+    [self.view addSubview:myView];
+    UIImageView *highView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 80, 320, 320)];
+    highView.image=[UIImage imageNamed:@"HighScore.png"];
+    [self.view addSubview:highView];
+    UILabel *highLabel=[[UILabel alloc]initWithFrame:CGRectMake(133, 148, 123, 58)];
+    highLabel.text=[NSString stringWithFormat:@"%d",(int)coins-coins2.intValue];
+    highLabel.textAlignment=UITextAlignmentCenter;
+    highLabel.font=[UIFont boldSystemFontOfSize:50];
+    highLabel.backgroundColor=[UIColor clearColor];
+    [highView addSubview:highLabel];
+    AsyncImageView *meImage = [[AsyncImageView alloc]initWithFrame:CGRectMake(43,153,46,47)];
+    [meImage loadImageFromURL:[NSURL URLWithString:us_image]];
+    [highView addSubview:meImage];
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
+    [myView removeFromSuperview];
+    [highView removeFromSuperview];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]];
+}
+
 -(void)goToFifthTrailer:(id)sender
 {
-    
+    [timer25 invalidate];
+    timer25=nil;
     [theAudio stop];
     theAudio=nil;
    [hintsView removeFromSuperview]; 
@@ -655,11 +514,7 @@ double w=0.0;
     
     str5=[sender currentTitle];
     
-    [timer25 invalidate];
-    timer25=nil;
-    [timer15 invalidate];
-    timer15=nil;
-    
+        
     
     UIButton *button = (UIButton *)[self.view1 viewWithTag:17];
     
@@ -879,9 +734,10 @@ comment = [[UIImageView alloc]initWithFrame:CGRectMake(65,30,170,70)];
 
         
     }
-    
+     
     
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+  //  [self highscore];
     
     comment.image=nil;
      if(opptime1!=nil && opptime2!=nil && opptime3!=nil && opptime4!=nil && opptime5!=nil)
@@ -944,28 +800,28 @@ comment = [[UIImageView alloc]initWithFrame:CGRectMake(65,30,170,70)];
     
     if([ans1 isEqualToString:@"1"])
         count1++;
-        if(str5!=name5 || [_time5.text isEqualToString:@"10.0"])
+        if(str5!=name5)
         a5=@"0";
     else
         a5=@"1";
     
-    if(str4!=name4 || [_time4.text isEqualToString:@"10.0"])
+    if(str4!=name4)
         a4=@"0";
     else
         a4=@"1";
     
     
-    if(str3!=namec || [_time3.text isEqualToString:@"10.0"])
+    if(str3!=namec)
         a3=@"0";
     else
         a3=@"1";
     
-    if(str2!=name2 || [_time2.text isEqualToString:@"10.0"] )
+    if(str2!=name2)
         a2=@"0";
     else
         a2=@"1";
     
-    if(str1!=namecel || [_time1.text isEqualToString:@"10.0"])
+    if(str1!=namecel)
         a1=@"0";
     else
         a1=@"1";
@@ -978,9 +834,34 @@ comment = [[UIImageView alloc]initWithFrame:CGRectMake(65,30,170,70)];
     NSLog(@"ans5=%@",a5);
     
     NSLog(@"Post Coins=%f",coins);
+    int stars=0;
+    
+    if(coins>=2000)
+    {
+        stars=1;
+    }
+    if(coins>=4000)
+    {
+        
+        stars=2;
+    }
+    if(coins>=8000)
+    {
+        stars=3;
+    }
+    if(coins>=16000)
+    {
+        stars=4;
+    }
+    if(coins>=32000)
+    {
+        coins=5;   
+    }
+
+    
     double newCoins=coins-coins2.intValue;
     [[NSUserDefaults standardUserDefaults]setInteger:newCoins forKey:@"newCoins"];
-    NSString *post =[[NSString alloc] initWithFormat:@"access_token=%@&q1=%@&q2=%@&q3=%@&q4=%@&q5=%@&a1=%@&a2=%@&a3=%@&a4=%@&a5=%@&coins=%d&game=%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"access_token"],_time1.text,_time2.text,_time3.text,_time4.text,_time5.text,a1,a2,a3,a4,a5,(int)newCoins,game_id];
+    NSString *post =[[NSString alloc] initWithFormat:@"access_token=%@&q1=%@&q2=%@&q3=%@&q4=%@&q5=%@&a1=%@&a2=%@&a3=%@&a4=%@&a5=%@&coins=%d&game=%@&stars=%d",[[NSUserDefaults standardUserDefaults]objectForKey:@"access_token"],_time1.text,_time2.text,_time3.text,_time4.text,_time5.text,a1,a2,a3,a4,a5,(int)newCoins,game_id,stars];
     NSLog(@"Complete game id=%@",game_id);
     NSURL *url=[NSURL URLWithString:@"http://guessthatcelebrity.com/test_complete.php"];
     
@@ -1018,6 +899,13 @@ comment = [[UIImageView alloc]initWithFrame:CGRectMake(65,30,170,70)];
     quicktime5=[json valueForKey:@"quick_guess5"];
     opponent_score=[json valueForKey:@"opponent_score"];
     user_score=[json valueForKey:@"user_score"];
+    NSString *highScore=[json valueForKey:@"user_high_score"];
+    NSLog(@"highScore=%@",highScore);
+    if(highScore.intValue==1)
+    {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];
+        [self highscore];
+    }
     
     NSLog(@"opponent Score=%@",opponent_score);
     NSLog(@"user score=%@",user_score);
@@ -1037,7 +925,7 @@ options3=[options3 objectAtIndex:0];
     [neDir removeItemAtPath:getAudioPath error:NULL];
     
   //  [self hideActivityIndicater];
-    
+   
     [self performSegueWithIdentifier:@"Answers" sender:self];   
 }
 
@@ -1402,6 +1290,8 @@ vc.opponent_score=opponent_score;
 
 -(void)goToFourthTrailer:(id) sender {
     
+    [timer24 invalidate];
+    timer24=nil;
     [theAudio stop];
     theAudio=nil;
        [hintsView removeFromSuperview];
@@ -1423,10 +1313,6 @@ vc.opponent_score=opponent_score;
     
     [self.view addSubviewWithZoomOutAnimation:progbtn4 duration:0 option:curveValues[1]];
     [self.view addSubviewWithZoomInAnimation:progbtn5 duration:0 option:curveValues[1]];
-    [timer24 invalidate];
-    timer24=nil;
-    [timer14 invalidate];
-    timer14=nil;
     
     
     
@@ -2207,6 +2093,8 @@ else {
 
 -(void)goToThirdTrailer:(id) sender {
     
+    [timer23 invalidate];
+    timer23=nil;
     [theAudio stop];
     theAudio=nil;
      [hintsView removeFromSuperview];
@@ -2224,10 +2112,6 @@ else {
      str3=[sender currentTitle];
     [self.view addSubviewWithZoomOutAnimation:progbtn3 duration:0 option:curveValues[1]];
     [self.view addSubviewWithZoomInAnimation:progbtn4 duration:0 option:curveValues[1]];
-    [timer23 invalidate];
-    timer23=nil;
-    [timer13 invalidate];
-    timer13=nil;
     
     
     
@@ -3021,6 +2905,8 @@ else {
 
 -(void)goToSecondTrailer:(id) sender {
     
+    [timer22 invalidate];
+    timer22=nil;
     str2=[sender currentTitle];
     [theAudio stop];
     theAudio=nil;
@@ -3046,10 +2932,6 @@ else {
     
     
     [self.view addSubviewWithZoomInAnimation:progbtn3 duration:0 option:curveValues[1]];
-    [timer22 invalidate];
-    timer22=nil;
-    [timer12 invalidate];
-    timer12=nil;
     
     
     
@@ -3849,7 +3731,7 @@ else {
     //mycoin.text=coins2;
     
     NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
-    
+        NSLog(@"coins2=%@",coins2);
     [defaults1 setObject:coins2 forKey:@"coinsforstars"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
@@ -3990,7 +3872,16 @@ else {
     
     [meImageView addSubview:star110];
     
-    
+        [timer2 invalidate];
+        timer2=nil;
+        [timer22 invalidate];
+        timer22=nil;
+        [timer23 invalidate];
+        timer23=nil;
+        [timer24 invalidate];
+        timer24=nil;
+        [timer25 invalidate];
+        timer25=nil;
     
     
     
@@ -4477,7 +4368,8 @@ else {
 -(void)goToFirstTrailer:(id) sender 
 {
     //[imageDatao3 writeToFile:pngPatho3 atomically:YES];
-     
+    [timer2 invalidate];
+    timer2=nil;
     NSString *pngPatho4 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/9.jpg"];
     NSString *imagesURLo4= original_image4;
     NSURL * imageURLo4 = [NSURL URLWithString:imagesURLo4] ;
@@ -4543,10 +4435,6 @@ else {
     
     
     [self.view addSubviewWithZoomInAnimation:progbtn2 duration:0 option:curveValues[1]];
-    [timer2 invalidate];
-    timer2=nil;
-    [timer invalidate];
-    timer=nil;
     
     if([str1 isEqualToString:namecel] )
     {
@@ -5338,7 +5226,7 @@ button5.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
 
 - (void)viewDidLoad
 {
-    
+  //  [self highscore];
     
     
     
@@ -5526,6 +5414,8 @@ button5.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
 {
    if(buttonIndex==0&&alertView.tag==4)
    {
+       [theAudio stop];
+       theAudio=nil;
        [self.navigationController popViewControllerAnimated:YES];
    }
        

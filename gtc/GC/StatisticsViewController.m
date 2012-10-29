@@ -69,6 +69,8 @@
           NSString *avgguesstime1=[json1 valueForKey:@"avg guess time"];
           NSString *quickestguesstime1=[json1 valueForKey:@"quikest guess time"];
           NSString *coinsearned1=[json1 valueForKey:@"coins earned"];
+        NSString *totalStars=[json1 valueForKey:@"stars"];
+        NSLog(@"Stars=%@",totalStars);
     
        // [totalgames setText:totalgames1];
       //  daysscndLabel.text=[NSString stringWithFormat:@"%@",[a substringToIndex:1 ]] ;
@@ -91,47 +93,8 @@
             coinsearned.text=[NSString stringWithFormat:@"%@",coinsearned1];
         else
             coinsearned.text=@"0";
-        if([coinsearned.text intValue]>=2000)
-        {
-           starsearned.text=@"1";
-        }
-        if([coinsearned.text intValue]>=4000)
-        {
-            
-            starsearned.text=@"2";
-            
-            
-        }
-        if([coinsearned.text intValue]>=8000)
-        {
         
-            
-            starsearned.text=@"3";
-            
-        }
-        if([coinsearned.text intValue]>=16000)
-        {
-         
-            
-            starsearned.text=@"4";
-            
-        }
-        if(
-           [coinsearned.text intValue]>=32000)
-        {
-           
-            
-            starsearned.text=@"5";
-            
-            
-        }
-        
-if([coinsearned.text intValue]<2000)
-{
-    starsearned.text=@"0";
-}
-
-        
+        starsearned.text=[NSString stringWithFormat:@"%@",totalStars];
         
     }
     else {

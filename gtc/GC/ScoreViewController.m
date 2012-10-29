@@ -187,32 +187,36 @@ int noofstara=0;
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    //user_score=@"3";
-   // textView=[[UILabel alloc]initWithFrame:CGRectMake(284, 55, 50, 50)];
-    textView1.text=user_score;
-    textView.text=[NSString stringWithFormat:@"%d",user_score.intValue-1];;
-    //  [textView setFont:[UIFont fontWithName:@"trueType" size:50]];
-   // [textView setFont:[UIFont boldSystemFontOfSize:41]];
-   // textView.textColor=[UIColor blueColor];
-    //  textView.font=[UIFont fontWithName:@"trueType" size:50.0];
     textView1.backgroundColor=[UIColor clearColor];
     textView.backgroundColor=[UIColor clearColor];
     [backgroundImageView addSubview:textView];
     [backgroundImageView addSubview:textView1];
-    [self slideView:textView1 withDuration:1 toX:229 andY:125];
-    [self slideView:textView withDuration:1 toX:229 andY:185];
+    NSString *old_User_Score=[[NSUserDefaults standardUserDefaults]valueForKey:@"OldUserScore"];
+    NSLog(@"new Score=%@",user_score);
+    NSLog(@"old score=%@",old_User_Score);
+    if(![user_score isEqualToString:old_User_Score])
+    {
+        opscorelabel.text=opponent_score ;
+        textView1.text=user_score;
+        textView.text=[NSString stringWithFormat:@"%d",user_score.intValue-1];
+        [self slideView:textView1 withDuration:1 toX:205 andY:125];
+        [self slideView:textView withDuration:1 toX:205 andY:185];
+        
+    }
+    else
+    {
+         textView.text=user_score;
+        OppLabel.text=opponent_score;
+        opscorelabel.text=[NSString stringWithFormat:@"%d",opponent_score.intValue-1];
+        [self slideView:OppLabel withDuration:1 toX:56 andY:125];
+        [self slideView:opscorelabel withDuration:1 toX:56 andY:185];
+       
+    }
     
-    //coinImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
-    // meImage.image=[UIImage imageNamed:@"splashscreen_v2@2x.png"];
-    
-    //  NSData *meData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"splashscreen_v2@2x.png"]];
-    
-    // [meImage setImage:[UIImage imageWithData:meData]];
+  //  userscorelabel.text=user_score;
     
     
-  //  [self.view addSubview:meImage];
-    
-    
+
     
     
     coinImageView.animationImages = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"circle1.png"],[UIImage imageNamed:@"circle2.png"], [UIImage imageNamed:@"circle3.png"], [UIImage imageNamed:@"circle4.png"],[UIImage imageNamed:@"circle5.png"],[UIImage imageNamed:@"circle6.png"],[UIImage imageNamed:@"circle7.png"],[UIImage imageNamed:@"circle8.png"],[UIImage imageNamed:@"circle9.png"],[UIImage imageNamed:@"circle10.png"],nil];
@@ -234,13 +238,13 @@ int noofstara=0;
 {
     [coinImageView stopAnimating];
     NSString *score=[[NSUserDefaults standardUserDefaults]valueForKey:@"newCoins"];
-    finalScore.text=[NSString stringWithFormat:@"You Won %@",score];
+    finalScore.text=[NSString stringWithFormat:@"You Earned %@",score];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    NSLog(@"noofstarp=%d",noofstarp);
     NSURL *url20 = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"Mltimedia_button_click"ofType:@"mp3"]];
     NSError *error;
     audioPlayer = [[AVAudioPlayer alloc]
@@ -267,9 +271,7 @@ userimageview.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL 
     oppcoinslabel.text=opponent_coins;
     ucoinslabel.text=user_coins;
     
-    userscorelabel.text=user_score;
-    opscorelabel.text=opponent_score ;
-
+   
     NSLog(@"%@",opponent_coins);
   
     
@@ -325,6 +327,11 @@ userimageview.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL 
     
        
     NSString *str=[[NSUserDefaults standardUserDefaults]objectForKey:@"coinsforstars"];
+    NSLog(@"str=%@",str);
+    if([str intValue]<2000)
+    {
+        noofstarp=0;
+    }
     if([str intValue]>=2000)
     {
         noofstarp=1;
@@ -348,6 +355,10 @@ userimageview.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL 
         noofstarp=5;
     }
     
+    if([user_coins intValue]<2000)
+    {
+        noofstara=0;
+    }
     if([user_coins intValue]>=2000)
     {
         noofstara=1;
@@ -371,6 +382,8 @@ userimageview.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL 
         noofstara=5;
     }
 
+    NSLog(@"noofstara=%d",noofstara);
+    NSLog(@"noofstarp=%d",noofstarp);
     
     if(noofstara>noofstarp)
 {
@@ -445,6 +458,7 @@ userimageview.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL 
     finalScore = nil;
     backgroundImageView = nil;
     textView1 = nil;
+    OppLabel = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -465,11 +479,11 @@ userimageview.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL 
     
     
     
-    NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
+   // NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
     
     // [defaults1 setObject:info forKey:@"next"];
-    [defaults1 setBool:YES forKey:@"next"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+   // [defaults1 setBool:YES forKey:@"next"];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
     
     
     int a=[[NSUserDefaults standardUserDefaults]integerForKey:@"count" ];
@@ -482,7 +496,8 @@ userimageview.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL 
   //  }
    // else{
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:a] animated:YES ];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadTable" object:nil];
+    
     //}
 }
 

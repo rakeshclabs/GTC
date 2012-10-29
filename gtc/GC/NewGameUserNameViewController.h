@@ -51,6 +51,7 @@ static int curveValues[] = {
     UIImage *image5;
     
     NSString *coins2;
+    UIView *myView;
    
     
     

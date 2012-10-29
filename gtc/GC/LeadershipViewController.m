@@ -95,22 +95,22 @@ AVAudioPlayer *audioPlayer;
     {
         [audioPlayer play];
     }
-    NSString *old_User_Score=[[NSUserDefaults standardUserDefaults]valueForKey:@"OldUserScore"];
-    NSLog(@"new Score=%@",user_score);
-    NSLog(@"old score=%@",old_User_Score);
-    if(![user_score isEqualToString:old_User_Score])
-    {
+//    NSString *old_User_Score=[[NSUserDefaults standardUserDefaults]valueForKey:@"OldUserScore"];
+//    NSLog(@"new Score=%@",user_score);
+//    NSLog(@"old score=%@",old_User_Score);
+//    if(![user_score isEqualToString:old_User_Score])
+//    {
         [self performSegueWithIdentifier:@"scorepage2" sender:self];
     
-    }
-    else
-    {
-        NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
-        [defaults1 setBool:YES forKey:@"next"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        int a=[[NSUserDefaults standardUserDefaults]integerForKey:@"count" ];
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:a] animated:YES ];  
-    }
+    //}
+//    else
+//    {
+//        NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
+//        [defaults1 setBool:YES forKey:@"next"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        int a=[[NSUserDefaults standardUserDefaults]integerForKey:@"count" ];
+//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:a] animated:YES ];  
+//    }
     
 
 }

@@ -159,6 +159,7 @@ UIView *createpopup;
               
             UIAlertView* a=[[UIAlertView alloc]initWithTitle:@"" message:@"error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [a show];
+            [self hideActivityIndicater];
         }
         else {
             if([jsonFB objectForKey:@"registered"]!=(id)[NSNull null]) {
@@ -168,6 +169,7 @@ UIView *createpopup;
             notRegistered = [jsonFB objectForKey:@"not registered"];
             
             NSLog(@"%@ %@", registered, notRegistered);
+            [self hideActivityIndicater];
             [self performSegueWithIdentifier:@"fb" sender:nil];
         }
     }
@@ -292,20 +294,22 @@ UIView *createpopup;
     button2.userInteractionEnabled =NO;
     [tableViewCell addSubview:button2];
    // daysfrstLabel = [[UILabel alloc]initWithFrame:CGRectMake(106, 6, 55, 30)];
-    daysfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(106, 6, 55, 30) fontName:@"myFont" pointSize:28.0];
+    daysfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(105, 3, 20, 35) fontName:@"myFont" pointSize:28.0];
     [daysfrstLabel setNumberOfLines:2];
     // [nameLabel setTextAlignment:UITextAlignmentCenter];
     [daysfrstLabel setBackgroundColor:[UIColor clearColor]];
      daysfrstLabel.textColor=[UIColor darkGrayColor];
-   
+   // daysfrstLabel.backgroundColor=[UIColor redColor];
+    daysfrstLabel.textAlignment=UITextAlignmentCenter;
      NSString *a=[NSString stringWithFormat:@"%@",days_left ];
     daysfrstLabel.text=@"0" ;
   //  daysfrstLabel.font = [UIFont fontWithName:@"TrueType" size:24];
    // [daysfrstLabel setFont:[UIFont boldSystemFontOfSize:28]];
     [button2 addSubview:daysfrstLabel];
    // daysscndLabel = [[UILabel alloc]initWithFrame:CGRectMake(128,6,55,30)];
-    daysscndLabel=[[FontLabel alloc]initWithFrame:CGRectMake(128, 6, 55, 30) fontName:@"myFont" pointSize:28.0];
+    daysscndLabel=[[FontLabel alloc]initWithFrame:CGRectMake(127, 3, 20, 35) fontName:@"myFont" pointSize:28.0];
     daysscndLabel.textColor=[UIColor darkGrayColor];
+    
   //  [button7 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
 
     [daysfrstLabel setNumberOfLines:3];
@@ -315,11 +319,13 @@ UIView *createpopup;
    // daysscndLabel.font = [UIFont fontWithName:@"TrueType" size:29];
    // [daysscndLabel setFont:[UIFont boldSystemFontOfSize:28]];
     [button2 addSubview:daysscndLabel];
+    daysscndLabel.textAlignment=UITextAlignmentCenter;
+   // daysscndLabel.backgroundColor=[UIColor redColor];
     NSString *b=[NSString stringWithFormat:@"%@",hours_left ];
 
     
    // hoursfrstLabel = [[UILabel alloc]initWithFrame:CGRectMake(156, 6, 55, 30)];
-    hoursfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(156, 6, 55, 30) fontName:@"myFont" pointSize:28.0];
+    hoursfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(154, 3, 20, 35) fontName:@"myFont" pointSize:28.0];
     [hoursfrstLabel setNumberOfLines:2];
     // [nameLabel setTextAlignment:UITextAlignmentCenter];
     [hoursfrstLabel setBackgroundColor:[UIColor clearColor]];
@@ -328,14 +334,19 @@ UIView *createpopup;
    // hoursfrstLabel.font = [UIFont fontWithName:@"TrueType" size:20];
     //[hoursfrstLabel setFont:[UIFont boldSystemFontOfSize:28]];
      hoursfrstLabel.textColor=[UIColor darkGrayColor];
+   // hoursfrstLabel.backgroundColor=[UIColor redColor];
+    hoursfrstLabel.textAlignment=UITextAlignmentCenter;
+    
     [button2 addSubview:hoursfrstLabel];
     
     //hoursscndLabel = [[UILabel alloc]initWithFrame:CGRectMake(176, 6, 55, 30)];
-    hoursscndLabel= [[FontLabel alloc]initWithFrame:CGRectMake(176, 6, 55, 30) fontName:@"myFont" pointSize:28.0];
+    hoursscndLabel= [[FontLabel alloc]initWithFrame:CGRectMake(176, 3, 20, 35) fontName:@"myFont" pointSize:28.0];
     [hoursscndLabel setNumberOfLines:2];
     // [nameLabel setTextAlignment:UITextAlignmentCenter];
     [hoursscndLabel setBackgroundColor:[UIColor clearColor]];
      hoursscndLabel.textColor=[UIColor darkGrayColor];
+    //hoursscndLabel.backgroundColor=[UIColor redColor];
+    hoursscndLabel.textAlignment=UITextAlignmentCenter;
     if(b.length>1)
     {
     hoursscndLabel.text=[NSString stringWithFormat:@"%@",[b substringWithRange:[b rangeOfComposedCharacterSequenceAtIndex:1]]] ;
@@ -352,24 +363,28 @@ UIView *createpopup;
     [button2 addSubview:hoursscndLabel];
      NSString *c=[NSString stringWithFormat:@"%@",minutes_left ];
   //  minutesfrstLabel = [[UILabel alloc]initWithFrame:CGRectMake(206, 6, 55, 30)];
-    minutesfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(206, 6, 55, 30) fontName:@"myFont" pointSize:28.0];
+    minutesfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(203, 3, 20, 35) fontName:@"myFont" pointSize:28.0];
     [minutesfrstLabel setNumberOfLines:2];
     // [nameLabel setTextAlignment:UITextAlignmentCenter];
     [minutesfrstLabel setBackgroundColor:[UIColor clearColor]];
     minutesfrstLabel.text=[NSString stringWithFormat:@"%@",[c substringToIndex:1]] ;
 ;
      minutesfrstLabel.textColor=[UIColor darkGrayColor];
+   // minutesfrstLabel.backgroundColor=[UIColor redColor];
+    minutesfrstLabel.textAlignment=UITextAlignmentCenter;
   //  minutesfrstLabel.font = [UIFont fontWithName:@"TrueType" size:20];
     //[minutesfrstLabel setFont:[UIFont boldSystemFontOfSize:28]];
     [button2 addSubview:minutesfrstLabel];
     
     //minutesscndLabel = [[UILabel alloc]initWithFrame:CGRectMake(226, 6, 55, 30)];
-    minutesscndLabel=[[FontLabel alloc]initWithFrame:CGRectMake(226, 6, 55, 30) fontName:@"myFont" pointSize:28.0];
+    minutesscndLabel=[[FontLabel alloc]initWithFrame:CGRectMake(225, 3, 20, 35) fontName:@"myFont" pointSize:28.0];
     [minutesscndLabel setNumberOfLines:2];
     // hourLabel.textColor=[UIColor darkGrayColor];
     // [nameLabel setTextAlignment:UITextAlignmentCenter];
     [minutesscndLabel setBackgroundColor:[UIColor clearColor]];
      minutesscndLabel.textColor=[UIColor darkGrayColor];
+  //  minutesscndLabel.backgroundColor=[UIColor redColor];
+    minutesscndLabel.textAlignment=UITextAlignmentCenter;
 
    if(c.length>1)
    {
@@ -386,7 +401,7 @@ UIView *createpopup;
     
 NSString *d=[NSString stringWithFormat:@"%@",seconds_left ];
   //  secondfrstLabel = [[UILabel alloc]initWithFrame:CGRectMake(256, 6, 55, 30)];
-    secondfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(256, 6, 55, 30) fontName:@"myFont" pointSize:28.0f];
+    secondfrstLabel=[[FontLabel alloc]initWithFrame:CGRectMake(252, 3, 20, 35) fontName:@"myFont" pointSize:28.0f];
     [secondfrstLabel setNumberOfLines:2];
     // [nameLabel setTextAlignment:UITextAlignmentCenter];
     [secondfrstLabel setBackgroundColor:[UIColor clearColor]];
@@ -396,13 +411,17 @@ NSString *d=[NSString stringWithFormat:@"%@",seconds_left ];
    // [secondfrstLabel setFont:[UIFont boldSystemFontOfSize:28]];
      secondfrstLabel.textColor=[UIColor darkGrayColor];
     [button2 addSubview:secondfrstLabel];
+   // secondfrstLabel.backgroundColor=[UIColor redColor];
+    secondfrstLabel.textAlignment=UITextAlignmentCenter;
     
     //secondscndLabel = [[UILabel alloc]initWithFrame:CGRectMake(276,6, 55, 30)];
-    secondscndLabel=[[FontLabel alloc]initWithFrame:CGRectMake(276, 6, 55, 30) fontName:@"myFont" pointSize:28.0f];
+    secondscndLabel=[[FontLabel alloc]initWithFrame:CGRectMake(274, 3, 20, 35) fontName:@"myFont" pointSize:28.0f];
     [secondscndLabel setNumberOfLines:2];
     // [nameLabel setTextAlignment:UITextAlignmentCenter];
     [secondscndLabel setBackgroundColor:[UIColor clearColor]];
      secondscndLabel.textColor=[UIColor darkGrayColor];
+  //  secondscndLabel.backgroundColor=[UIColor redColor];
+    secondscndLabel.textAlignment=UITextAlignmentCenter;
  //   [secondfrstLabel sizeToFit];
   //  [secondscndLabel sizeToFit];
     
@@ -1288,14 +1307,6 @@ else
 
 -(void)POST :(NSInteger)Tag
 {
-   // NSString *username = userName.text;
-    //NSString *passwrd = password.text;
-    // indicator.hidden = TRUE;
-  //  [indicator startAnimating];
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //[defaults setObject:username forKey:@"user_name"];
-    //[defaults setObject:passwrd forKey:@"passWord"];
-    //[defaults synchronize];
     NSLog(@"%@",access_token);
     gid=[gameidarray objectAtIndex:Tag];
      NSLog(@" play game id :%@",[gameidarray objectAtIndex:Tag]);
@@ -1313,22 +1324,6 @@ else
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
-  /*  NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if ([data length] > 0 && error == nil){
-             [self receivedPostData:data];
-         }else if ([data length] == 0 && error == nil){
-             [self emptyReply];
-         }else if (error != nil && error.code == NSURLErrorTimedOut){ //used this NSURLErrorTimedOut from foundation error responses
-             [self timedOut];
-         }else if (error != nil){
-             [self downloadError:error];
-         }
-     }];
-   */
-   // [NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
-    
     NSError *error;
    NSURLResponse *response;
    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -1574,33 +1569,7 @@ else
     }
     [self showActivityIndicater];
     [self POST:sender.tag];
-   // [self SaveData];
-   // NSLog(@"data saved");
-    
-    /*
-     
-     
-     
-     NSArray *options3=[json objectForKey:@"opponent_answers"];
-     opptime1=[options3 objectAtIndex:0];
-     opptime2=[options3 objectAtIndex:1];
-     
-     opptime3=[options3 objectAtIndex:3];
-     opptime4=[options3 objectAtIndex:4];
-     opptime5=[options3 objectAtIndex:5];
-     NSLog(@"%@",opptime1);
-     NSLog(@"%@",opptime2);
-     NSLog(@"%@",opptime3);
-     NSLog(@"%@",opptime4);
-     NSLog(@"%@",opptime5);
-
-     */
-  //  [SVProgressHUD dismiss];
-    //  [self performSegueWithIdentifier:@"Game1" sender:nil];
-    
-    
-    
-    
+ 
     if(original_image1)
     {
         [self SaveData];
@@ -1614,14 +1583,10 @@ else
 }
 -(void)showActivityIndicater
 {
-meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
-    // meImage.image=[UIImage imageNamed:@"splashscreen_v2@2x.png"];
-    
-    //  NSData *meData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"splashscreen_v2@2x.png"]];
-    
-    // [meImage setImage:[UIImage imageWithData:meData]];
-    
-    
+    [meImage stopAnimating];
+    [meImage removeFromSuperview];
+    self.view.userInteractionEnabled=NO;
+    meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
     [self.view addSubview:meImage];
     
     
@@ -1647,6 +1612,8 @@ meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
 }
 -(void)hideActivityIndicater
 {
+   // [myView removeFromSuperview];
+    self.view.userInteractionEnabled=YES;
   // [SVProgressHUD dismiss];
     [meImage stopAnimating];
 }
@@ -1703,21 +1670,6 @@ meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
     NSError *error;
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-//     {
-//         if ([data length] > 0 && error == nil){
-//             [self receivedUsernameData:data];
-//         }else if ([data length] == 0 && error == nil){
-//             [self emptyReply];
-//         }else if (error != nil && error.code == NSURLErrorTimedOut){ //used this NSURLErrorTimedOut from foundation error responses
-//             [self timedOut];
-//         }else if (error != nil){
-//             [self downloadError:error];
-//         }
-//     }];
-//    }
-    
     NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
     NSLog(@"%@",data);
     NSError *error1;
@@ -1751,6 +1703,7 @@ meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
     NSDictionary *info1 = [json objectForKey:@"first_celeb"];
     if(![info1 objectForKey:@"original_image"])
     {
+        [self hideActivityIndicater];
         NSString *msg12=[json objectForKey:@"already"];
         NSString *error=[json objectForKey:@"error"];
         if(msg12)
@@ -1764,22 +1717,6 @@ meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
             [alert show];
         }
     }
-//    else {
-//            NSString *fbuname = [[NSUserDefaults standardUserDefaults]valueForKey:@"login"];
-//            NSString *fbid=[[NSUserDefaults standardUserDefaults]valueForKey:@"fbid"];
-//            NSLog(@"fbuname=%@",fbuname);
-//            if([fbuname isEqualToString:@"fb"])
-//            {
-//                NSLog(@"fbid=%@",fbid);
-//                if(fbid.intValue!=0)
-//                {
-//                    [[FacebookManager facebookConnect]Call_FB];
-//                    [[FacebookManager facebookConnect]Post_To_Friend_Wall_WithMsg:[NSString stringWithFormat:@"I just created a game with %@ on the guess that celebrity iPhone app!",oppenent_name]Friend_FBID:fbid WithLink:nil];
-//                }
-//            }
-//            
-//         
-//    }
   
     audio=[info1 objectForKey:@"audio"];
     NSLog(@"value is %@", audio);
@@ -2069,22 +2006,6 @@ original_image1=    [info1 objectForKey:@"original_image"];
    NSError *error;
    NSURLResponse *response;
    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-  /*  NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if ([data length] > 0 && error == nil){
-             [self receivedEmailData:data];
-         }else if ([data length] == 0 && error == nil){
-             [self emptyReply];
-         }else if (error != nil && error.code == NSURLErrorTimedOut){ //used this NSURLErrorTimedOut from foundation error responses
-             [self timedOut];
-         }else if (error != nil){
-             [self downloadError:error];
-         }
-     }];
- 
-    }
-   */
   
     NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
     NSLog(@"%@",data);
@@ -2115,6 +2036,7 @@ original_image1=    [info1 objectForKey:@"original_image"];
     NSDictionary *info1 = [json objectForKey:@"first_celeb"];
     if(![info1 objectForKey:@"original_image1"])
     {
+        [self hideActivityIndicater];
         NSString *msg12=[json objectForKey:@"already"];
         
         NSString *error=[json objectForKey:@"error"];
@@ -2249,6 +2171,7 @@ original_image1=    [info1 objectForKey:@"original_image"];
 -(void)facebookclicked
 {
     [myView removeFromSuperview];
+    [self showActivityIndicater];
     self.tableView.userInteractionEnabled=YES;
     settingButton.enabled=YES;
     backButton.enabled=YES;
@@ -2269,6 +2192,7 @@ original_image1=    [info1 objectForKey:@"original_image"];
         
         
     [[FacebookManager facebookConnect]Call_FB];
+        [self hideActivityIndicater];
         
     }
     
@@ -2417,28 +2341,29 @@ original_image1=    [info1 objectForKey:@"original_image"];
     }
     
     [createpopup removeFromSuperview];
+    [self showActivityIndicater];
     
-      meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
-   
-    
-    [self.view addSubview:meImage];
-    
-    
-    
-    
-    meImage.animationImages = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"img9.png"],[UIImage imageNamed:@"img8.png"], [UIImage imageNamed:@"img7.png"], [UIImage imageNamed:@"img6.png"],[UIImage imageNamed:@"img5.png"],[UIImage imageNamed:@"img4.png"],[UIImage imageNamed:@"img3.png"],[UIImage imageNamed:@"img11.png"],[UIImage imageNamed:@"img10.png"],nil];
-    [self.view addSubview:meImage];
- 
-
-    
-    if(![meImage isAnimating]) {
-     
-        meImage.animationDuration=1;
-        [meImage startAnimating];
-    }
-    
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-  
+//      meImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,320,480)];
+//   
+//    
+//    [self.view addSubview:meImage];
+//    
+//    
+//    
+//    
+//    meImage.animationImages = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"img9.png"],[UIImage imageNamed:@"img8.png"], [UIImage imageNamed:@"img7.png"], [UIImage imageNamed:@"img6.png"],[UIImage imageNamed:@"img5.png"],[UIImage imageNamed:@"img4.png"],[UIImage imageNamed:@"img3.png"],[UIImage imageNamed:@"img11.png"],[UIImage imageNamed:@"img10.png"],nil];
+//    [self.view addSubview:meImage];
+// 
+//
+//    
+//    if(![meImage isAnimating]) {
+//     
+//        meImage.animationDuration=1;
+//        [meImage startAnimating];
+//    }
+//    
+//    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+//  
     
       
     
@@ -2909,21 +2834,6 @@ original_image1=    [info1 objectForKey:@"original_image"];
    NSError *error1 = nil;
     NSURLResponse *response = nil;
  NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error1];
- /*
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if ([data length] > 0 && error == nil){
-             [self receivedPost1Data:data];
-         }else if ([data length] == 0 && error == nil){
-             [self emptyReply];
-         }else if (error != nil && error.code == NSURLErrorTimedOut){ //used this NSURLErrorTimedOut from foundation error responses
-             [self timedOut];
-         }else if (error != nil){
-             [self downloadError:error];
-         }
-     }]; */
- 
     if (data)
     {
         NSLog(@"\ndata: %@ \nstring: %@", data, [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
@@ -2939,7 +2849,7 @@ original_image1=    [info1 objectForKey:@"original_image"];
       
        days_left=[personalData objectForKey:@"days_left"];
         hours_left=[personalData objectForKey:@"hours_left"];
-        minutes_left= [personalData objectForKey:@"minuts_left"];
+        minutes_left=[personalData objectForKey:@"minuts_left"];
         seconds_left=[personalData objectForKey:@"seconds_left"];
         NSLog(@"days=%@",days_left);
         if(!days_left)
@@ -2995,23 +2905,7 @@ original_image1=    [info1 objectForKey:@"original_image"];
            //  gid=[games1 objectForKey:@"game_id"];
             
              NSLog(@"arr=%@",arr);
-        }    //     NSString *a=@"1";
-            
-            //  [oppimages addObject:ourl];
-//            [arr addObject:userstatus];
-//            [names addObject:opponent_name];
-//            [images addObject:opponent_image];
-//            [ocoins addObject:ocoin];
-//            [ucoins addObject:ucoin];
-//            [user_score_arrray addObject:ucoin];
-//            [gameidarray addObject:gid];
-//            [opponent_score_array addObject:ocoin];
-//            [user_accept_status_array addObject:user_accept_status];
-//            [game_nudge_status_array addObject:game_nudge_status];
-            
-            // [arr addObject:userstatus];
-           
-//        }
+        }    
 }
     
       
@@ -3031,13 +2925,47 @@ original_image1=    [info1 objectForKey:@"original_image"];
 }
 
 
+-(void) reloadTableViewData
+{
+    self.view.userInteractionEnabled=NO;
+   // NSLog(@"%d",[[NSUserDefaults standardUserDefaults]boolForKey:@"next"]);
+    //if([[NSUserDefaults standardUserDefaults]boolForKey:@"next"])
+    //{
+        
+        
+        
+        [self reloadData1];
+      //  NSLog(@"before next no");
+        
+        //[[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"next"] ;
+        //[[NSUserDefaults standardUserDefaults] synchronize];
+       // NSLog(@"after next no");
+       
+        
+    //}
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"ratecount"]%3==0 && [[NSUserDefaults standardUserDefaults] integerForKey:@"ratecountyes"]!=1)
+    {
+        if(Alert)
+        {    
+            [self RatePopUp];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:2  forKey:@"rate"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        NSLog(@"rate=%d",[[NSUserDefaults standardUserDefaults] integerForKey:@"rate"]);
+        
+    }
 
+}
 
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"Minutes=%@",minutes_left);
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData) name:@"ReloadTable" object:nil];
     myView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
     myView.backgroundColor=[UIColor blackColor];
     myView.alpha= 0.7;
@@ -3167,7 +3095,8 @@ original_image1=    [info1 objectForKey:@"original_image"];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
     
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
@@ -3176,6 +3105,10 @@ original_image1=    [info1 objectForKey:@"original_image"];
         [[NSUserDefaults standardUserDefaults] setInteger:1  forKey:@"ratecountyes"];
         [[NSUserDefaults standardUserDefaults]synchronize];
         
+    }
+    else if([title isEqualToString:@"No"])
+    {
+        Alert=TRUE;
     }
     
          
@@ -3522,7 +3455,7 @@ original_image1=    [info1 objectForKey:@"original_image"];
     
     
  [self hideActivityIndicater];
-    
+        
     
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -3533,28 +3466,7 @@ original_image1=    [info1 objectForKey:@"original_image"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     NSLog(@"tim=%d",[[NSUserDefaults standardUserDefaults] integerForKey:@"tim"]);
 
-    NSLog(@"%d",[[NSUserDefaults standardUserDefaults]boolForKey:@"next"]);
-    if([[NSUserDefaults standardUserDefaults]boolForKey:@"next"])
-    {
-
-       
-      
-        [self reloadData1];
-        NSLog(@"before next no");
-     
-      [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"next"] ;
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"after next no");
-        if([[NSUserDefaults standardUserDefaults] integerForKey:@"ratecount"]%3==0 && [[NSUserDefaults standardUserDefaults] integerForKey:@"ratecountyes"]!=1)
-        {
-            [self RatePopUp];
-            [[NSUserDefaults standardUserDefaults] setInteger:2  forKey:@"rate"];
-              [[NSUserDefaults standardUserDefaults]synchronize];
-              NSLog(@"rate=%d",[[NSUserDefaults standardUserDefaults] integerForKey:@"rate"]);
-            
-        }
-
-    }
+    
    }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -3580,26 +3492,26 @@ if(seconds1==0&&minutes1==0&&hours1==0&&days1==0)
 else
 {
     NSLog(@"%d",seconds1);
-if(seconds1==0)
+if(seconds1==-1)
     {
          seconds1=59;
-       
-        if(minutes1==0)
+        minutes1=minutes1-1;
+        if(minutes1==-1)
         {
             minutes1=59;
 
             NSLog(@"%d",hours1);
             hours1=hours1-1;
-            if(hours1==0)
+            if(hours1==-1)
             {
                 hours1=23;
                 NSLog(@"%d",days1);
-               
+                days1=days1-1;
                 if(days1==0)
                 {
                     days1=6;
                 }
-                 days1=days1-1;
+                // days1=days1-1;
                  NSString *d=[NSString stringWithFormat:@"%d",days1 ];
                 daysfrstLabel.text=[NSString stringWithFormat:@"%@",[d substringToIndex:1]] ;
                 ;
@@ -3614,7 +3526,7 @@ if(seconds1==0)
                     daysfrstLabel.text=@"0";
                 }
             }
-            hours1=hours1-1;
+          //  hours1=hours1-1;
 
              NSString *d=[NSString stringWithFormat:@"%d",hours1 ];
             hoursfrstLabel.text=[NSString stringWithFormat:@"%@",[d substringToIndex:1]] ;
@@ -3632,7 +3544,7 @@ if(seconds1==0)
             }
             
         }
-     minutes1=minutes1-1;
+    // minutes1=minutes1-1;
          NSString *d=[NSString stringWithFormat:@"%d",minutes1 ];
         minutesfrstLabel.text=[NSString stringWithFormat:@"%@",[d substringToIndex:1]] ;
         ;
@@ -3675,83 +3587,6 @@ if(seconds1==0)
 }  // sleep(1);
   // [self onTournament:nil];
 //[self performSelector:@selector(onTournament:) withObject:self afterDelay:1];
-}
--(void) onTournamentMinutes:(NSTimer *)timer1 {
-    
-    //seconds1=[seconds_left intValue];
-    NSLog(@"%d",minutes1);
-    minutes1=minutes1-1;
-    if(minutes1==0)
-    {
-    
-        minutes1=60;
-    }
-    //seconds_left=[NSString stringWithFormat:@"%@",secondscndLabel.text];
-    //  seconds_left=[NSString stringWithFormat:@"%d",[seconds_left intValue]-1 ];
-    //seconds_left=[NSString stringWithFormat:@"%d",seconds1];
-    NSString *d=[NSString stringWithFormat:@"%d",minutes1 ];
-    minutesfrstLabel.text=[NSString stringWithFormat:@"%@",[d substringToIndex:1]] ;
-    ;
-
-    if(d.length>1)
-    {
-        minutesscndLabel.text=[NSString stringWithFormat:@"%@",[d substringWithRange:[d rangeOfComposedCharacterSequenceAtIndex:1]]];
-    }
-    
-     
-    
-    
-}
--(void) onTournamentHours:(NSTimer *)timer1 {
-    
-    //seconds1=[seconds_left intValue];
-    NSLog(@"%d",hours1);
-    hours1=hours1-1;
-    if(hours1==0)
-    {
-        
-        hours1=60;
-    }
-    //seconds_left=[NSString stringWithFormat:@"%@",secondscndLabel.text];
-    //  seconds_left=[NSString stringWithFormat:@"%d",[seconds_left intValue]-1 ];
-    //seconds_left=[NSString stringWithFormat:@"%d",seconds1];
-    NSString *d=[NSString stringWithFormat:@"%d",hours1 ];
-    hoursfrstLabel.text=[NSString stringWithFormat:@"%@",[d substringToIndex:1]] ;
-    ;
-    [hoursscndLabel setBackgroundColor:[UIColor clearColor]];
-    if(d.length>1)
-    {
-        hoursscndLabel.text=[NSString stringWithFormat:@"%@",[d substringWithRange:[d rangeOfComposedCharacterSequenceAtIndex:1]]];
-    }
-    
-       
-    
-}
--(void) onTournamentDays:(NSTimer *)timer1 {
-    
-    //seconds1=[seconds_left intValue];
-    NSLog(@"%d",days1);
-    days1=days1-1;
-    if(days1==0)
-    {
-              days1=60;
-    }
-    //seconds_left=[NSString stringWithFormat:@"%@",secondscndLabel.text];
-    //  seconds_left=[NSString stringWithFormat:@"%d",[seconds_left intValue]-1 ];
-    //seconds_left=[NSString stringWithFormat:@"%d",seconds1];
-    NSString *d=[NSString stringWithFormat:@"%d",days1 ];
-    daysfrstLabel.text=[NSString stringWithFormat:@"%@",[d substringToIndex:1]] ;
-    ;
-    [daysscndLabel setBackgroundColor:[UIColor clearColor]];
-    if(d.length>1)
-    {
-        daysscndLabel.text=[NSString stringWithFormat:@"%@",[d substringWithRange:[d rangeOfComposedCharacterSequenceAtIndex:1]]];
-    }
-  
-    
-    
-    
-    
 }
 
 

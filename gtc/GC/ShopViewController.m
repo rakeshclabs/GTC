@@ -69,6 +69,8 @@ AVAudioPlayer *audioPlayer,*audioPlayercountdown;
     [self setEliminations:nil];
     [self setHints:nil];
     [self setCoinlabel:nil];
+    remainingHint = nil;
+    remainingElimination = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

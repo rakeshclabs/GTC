@@ -84,7 +84,7 @@ NSString * const FacebookManagerLoginFailure = @"FacebookManagerLoginFailure";
         facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
      
         NSLog(@"\nFB_Token=%@\n",facebook.accessToken);
-        [_Delegate FB_Logged_In_Successfully];
+       // [_Delegate FB_Logged_In_Successfully];
     
     }
     

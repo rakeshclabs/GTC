@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 #import <AVFoundation/AVFoundation.h>
-@interface AnswerViewController : UIViewController  <AVAudioPlayerDelegate,ADBannerViewDelegate,UIGestureRecognizerDelegate>
+#import "FacebookManager.h"
+@interface AnswerViewController : UIViewController  <AVAudioPlayerDelegate,ADBannerViewDelegate,UIGestureRecognizerDelegate,FBManagerDelegate>
+{
+    UIImageView *activityImage;
+     id<FBManagerDelegate>_Delegate;
+}
 
 @property (retain, nonatomic) IBOutlet UILabel *oppcoinslabel;
 @property (retain, nonatomic) IBOutlet UILabel *answer1;

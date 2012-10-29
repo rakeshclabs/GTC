@@ -38,7 +38,7 @@
     NSTimer *tournamenthours;
     NSTimer *tournamentdays;
     NSString *userName;
-    
+    BOOL Alert;
 
     NSMutableArray * registered, * notRegistered;
     UIScrollView *gamesScroll;
